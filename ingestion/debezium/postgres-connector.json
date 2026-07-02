@@ -1,0 +1,29 @@
+{
+  "name": "lamf-postgres-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "lamf",
+    "database.password": "lamf",
+    "database.dbname": "lamf",
+
+    "topic.prefix": "lamf",
+    "schema.include.list": "lamf_src",
+    "table.include.list": "lamf_src.customer,lamf_src.loan,lamf_src.mf_holding,lamf_src.disbursement,lamf_src.repayment",
+
+    "plugin.name": "pgoutput",
+    "slot.name": "lamf_slot",
+    "publication.name": "lamf_pub",
+    "publication.autocreate.mode": "filtered",
+    "snapshot.mode": "initial",
+    "tombstones.on.delete": "false",
+
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false"
+  }
+}

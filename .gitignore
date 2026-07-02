@@ -1,0 +1,37 @@
+# env / secrets
+.env
+*.env.local
+.run-screenshots/cdp_airflow.py
+.run-screenshots/cdp_diag.py
+.run-screenshots/cdp_superset.py
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+docs/
+ingestion/debezium/README.md
+.pytest_cache/
+*.egg-info/
+
+# data (generated; keep small seed only)
+data/generated/
+data/seed/*.parquet
+*.log
+
+# docker / build
+**/target/
+**/build/
+**__pycache__/
+*.jar
+!infra/**/*.jar
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# great expectations local artifacts
+quality/great_expectations/uncommitted/

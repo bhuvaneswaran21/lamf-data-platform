@@ -1,0 +1,28 @@
+{
+  "expectation_suite_name": "silver_nav",
+  "meta": {
+    "notes": "Canonical Great Expectations suite for silver.nav. The runnable gate in run_checkpoint.py mirrors these as Spark predicates so it stays dependency-light; this file documents the GX-native form and can be loaded by a full GX deployment."
+  },
+  "expectations": [
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {"column_set": ["scheme_code", "isin", "nav", "nav_date", "published_at"]}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {"column": "scheme_code"}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {"column": "nav", "min_value": 0, "strict_min": true}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {"column": "nav_date"}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {"column_list": ["scheme_code", "nav_date"]}
+    }
+  ]
+}
